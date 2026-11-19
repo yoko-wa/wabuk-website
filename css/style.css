@@ -59,11 +59,13 @@ nav a:hover {
     font-weight: 900;
     margin-bottom: 25px;
     letter-spacing: -2px;
+    color: #FFFFFF;
 }
 
 #home p {
     font-size: 20px;
     font-weight: 500;
+    color: #FFFFFF;
 }
 
 /* 각 영역 */
