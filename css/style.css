@@ -225,3 +225,31 @@ footer {
     line-height: 1.9;
     color: #625B54;
 }
+/* 철학 카드 디자인 보강 */
+.philosophy-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.philosophy-item {
+    background: #FFF9F0 !important;
+    border: 1px solid #F0E5D8 !important;
+    border-radius: 16px !important;
+    padding: 50px 25px !important;
+    min-height: 230px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.philosophy-item h3 {
+    color: #F47721 !important;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+    .philosophy-container {
+        grid-template-columns: 1fr;
+    }
+}
