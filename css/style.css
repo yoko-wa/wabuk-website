@@ -179,3 +179,49 @@ footer {
     line-height: 2 !important;
     color: #625B54 !important;
 }
+/* PHILOSOPHY 영역 */
+#philosophy {
+    background-color: #FFFFFF;
+    padding: 130px 8%;
+}
+
+#philosophy h2 {
+    font-size: 46px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 60px;
+}
+
+.philosophy-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-item {
+    flex: 1;
+    padding: 45px 25px;
+    background-color: #FFF9F0;
+    border-radius: 12px;
+    border: 1px solid #F0E5D8;
+    transition: transform 0.3s ease;
+}
+
+.philosophy-item:hover {
+    transform: translateY(-8px);
+}
+
+.philosophy-item h3 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #F47721;
+    margin-bottom: 25px;
+}
+
+.philosophy-item p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #625B54;
+}
