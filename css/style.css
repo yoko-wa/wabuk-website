@@ -7,8 +7,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #222;
-    background-color: #ffffff;
+    color: #292521;
+    background-color: #FFF9F0;
 }
 
 /* 상단 메뉴 */
@@ -17,50 +17,79 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 25px 8%;
-    border-bottom: 1px solid #eeeeee;
+    background-color: #FFF9F0;
+    border-bottom: 1px solid #F0E5D8;
 }
 
 header h1 {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 34px;
+    font-weight: 900;
+    color: #F47721;
+    letter-spacing: -1px;
 }
 
 nav a {
     text-decoration: none;
-    color: #222;
-    margin-left: 25px;
+    color: #292521;
+    margin-left: 30px;
     font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #F47721;
 }
 
 /* 메인 화면 */
 #home {
-    min-height: 600px;
+    min-height: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #F47721;
+    color: #FFFFFF;
+    padding: 40px 20px;
 }
 
 #home h2 {
-    font-size: 55px;
-    margin-bottom: 20px;
+    font-size: 64px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
 }
 
 #home p {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 /* 각 영역 */
 section {
-    padding: 100px 8%;
+    padding: 110px 8%;
     text-align: center;
+}
+
+section h2 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    color: #F47721;
+}
+
+section p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #625B54;
 }
 
 /* 하단 */
 footer {
-    padding: 30px;
+    padding: 35px;
     text-align: center;
-    background-color: #222;
-    color: white;
+    background-color: #292521;
+    color: #FFFFFF;
+    font-size: 13px;
 }
