@@ -145,3 +145,37 @@ footer {
     color: #FFFFFF;
     transform: translateY(-3px);
 }
+/* BRAND 영역 */
+#brand {
+    background-color: #FFF9F0;
+    padding: 130px 8%;
+}
+
+.section-label {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #F47721 !important;
+    margin-bottom: 20px;
+}
+
+#brand h2 {
+    font-size: 46px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 35px;
+}
+
+.brand-description {
+    font-size: 21px !important;
+    font-weight: 700;
+    line-height: 1.9 !important;
+    color: #292521 !important;
+    margin-bottom: 20px;
+}
+
+.brand-detail {
+    font-size: 16px !important;
+    line-height: 2 !important;
+    color: #625B54 !important;
+}
