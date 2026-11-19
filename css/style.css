@@ -253,3 +253,75 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* MENU 영역 */
+#menu {
+    background-color: #FFF9F0;
+    padding: 130px 8%;
+}
+
+#menu h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 20px;
+}
+
+.menu-intro {
+    margin-bottom: 55px;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    overflow: hidden;
+    padding-bottom: 30px;
+    border: 1px solid #F0E5D8;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-7px);
+}
+
+.menu-image {
+    height: 230px;
+    background-color: #F0E5D8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8B8177;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.menu-item h3 {
+    margin-top: 25px;
+    font-size: 19px;
+    color: #F47721;
+}
+
+.menu-item p {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #625B54;
+}
+
+.menu-item span {
+    font-size: 15px;
+    font-weight: bold;
+    color: #292521;
+}
+
+@media (max-width: 768px) {
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+}
