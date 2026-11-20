@@ -588,3 +588,12 @@ button {
   text-decoration: underline;
   text-underline-offset: 6px;
 }
+.store-preview {
+  margin: 0;
+}
+
+.store-preview figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
