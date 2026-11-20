@@ -3,21 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="와벅의 첫 매장 준비 소식과 매장 외관 콘셉트를 확인하세요.">
   <title>매장 안내 | WaBuk</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js" defer></script>
+
+  <style>
+    .store-page {
+      --store-navy: #182942;
+      --store-cream: #fff3df;
+      --store-paper: #fffdfa;
+      --store-yellow: #f9bd43;
+      --store-muted: #526076;
+      --store-line: #e8ded0;
+      color: var(--store-navy);
+      background: var(--store-paper);
+    }
+
+    .store-page .store-banner {
+      padding-block: clamp(44px, 7vw, 84px);
+      background: var(--store-navy);
+      color: var(--store-cream);
+    }
+
+    .store-page .store-banner h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: 1.05;
+      letter-spacing: -0.065em;
+      word-break: keep-all;
+    }
+
+    .store-page .store-banner h1::after {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 5px;
+      margin-top: 20px;
+      border-radius: 999px;
+      background: var(--store-yellow);
+    }
+
+    .store-page .store-content {
+      padding-block: clamp(30px, 6vw, 80px);
+    }
+
+    .store-page .store-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+      align-items: center;
+      gap: clamp(22px, 5vw, 64px);
+      padding: clamp(20px, 4vw, 48px);
+      border: 1px solid var(--store-line);
+      border-radius: 26px;
+      background: var(--store-cream);
+    }
+
+    .store-page .store-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--store-yellow);
+      color: var(--store-navy);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .store-page .store-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .store-page .store-details h2 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4.5vw, 54px);
+      line-height: 1.13;
+      letter-spacing: -0.055em;
+      word-break: keep-all;
+    }
+
+    .store-page .store-details p {
+      max-width: 32ch;
+      margin: 0;
+      color: var(--store-muted);
+      font-size: clamp(16px, 1.7vw, 18px);
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .store-page .store-details .button {
+      margin-top: 22px;
+      background: var(--store-navy);
+      color: #fff;
+    }
+
+    .store-page .store-details .button:hover {
+      background: #304765;
+    }
+
+    .store-page .store-figure {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--store-line);
+      border-radius: 18px;
+      background: var(--store-paper);
+    }
+
+    .store-page .store-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .store-page .store-figure figcaption {
+      padding: 10px 14px;
+      color: var(--store-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .store-page .store-banner {
+        padding-block: 34px;
+      }
+
+      .store-page .store-panel {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html#home" aria-label="WaBuk 홈">
         <img src="wabuk-logo.png" alt="WaBuk">
       </a>
+
       <button class="nav-toggle" type="button" aria-expanded="false"
-              aria-controls="main-nav" hidden>메뉴</button>
+              aria-controls="main-nav" hidden>
+        메뉴
+      </button>
+
       <nav class="site-nav" id="main-nav" aria-label="주 메뉴">
-        <a href="index.html#menu">메뉴</a>
-       <a href="brand.html">브랜드</a>
+        <a href="menu.html">메뉴</a>
+        <a href="brand.html">브랜드</a>
         <a href="philosophy.html">철학</a>
         <a href="news.html">소식</a>
         <a href="store.html" aria-current="page">매장</a>
@@ -25,34 +162,37 @@
     </div>
   </header>
 
-  <main>
-    <section class="page-heading">
+  <main class="store-page">
+    <div class="store-banner">
       <div class="container">
         <h1>매장 안내</h1>
-        <p>와벅의 첫 매장을 준비하고 있습니다.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="section" aria-labelledby="first-store-title">
-      <div class="container split">
-        <div>
-          <h2 class="section-title" id="first-store-title">와벅 첫 번째 매장</h2>
-          <p class="lead">오픈 준비 중</p>
-          <p>매장 위치와 오픈 일정은 확정되는 대로 안내하겠습니다.</p>
-          <a class="button" href="news.html">와벅 소식 보기</a>
+    <section class="store-content" aria-labelledby="first-store-title">
+      <div class="container">
+        <div class="store-panel">
+          <div class="store-details">
+            <span class="store-status">오픈 준비 중</span>
+            <h2 id="first-store-title">와벅 첫 번째 매장</h2>
+            <p>매장 위치와 오픈 일정은 확정되는 대로 안내하겠습니다.</p>
+            <a class="button" href="news.html">와벅 소식 보기</a>
+          </div>
+
+          <figure class="store-figure">
+            <img src="wabuk-store-sign.png"
+                 alt="와벅 간판이 달린 통유리 매장 전면">
+            <figcaption>매장 외관 콘셉트 이미지</figcaption>
+          </figure>
         </div>
-
-        <figure class="store-preview">
-          <img class="split-image" src="wabuk-store-sign.png"
-               alt="와벅 간판이 있는 매장 외관 콘셉트">
-          <figcaption>매장 외관 콘셉트 이미지</figcaption>
-        </figure>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container"><small>© 2026 WaBuk. All rights reserved.</small></div>
+    <div class="container">
+      <small>© 2026 WaBuk. All rights reserved.</small>
+    </div>
   </footer>
 </body>
 </html>
