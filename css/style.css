@@ -439,3 +439,83 @@ footer {
 .news-item:hover .news-image img {
     transform: scale(1.05);
 }
+/* STORE 영역 */
+#store {
+    background-color: #FFF9F0;
+    padding: 130px 8%;
+    text-align: center;
+}
+
+#store h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 20px;
+}
+
+.store-intro {
+    font-size: 17px;
+    color: #625B54;
+    margin-bottom: 55px;
+}
+
+/* 매장 안내 카드 */
+.store-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border: 1px solid #F0E5D8;
+    border-radius: 20px;
+    padding: 75px 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.store-status {
+    display: inline-block;
+    background-color: #F47721;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.store-content h3 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 25px;
+}
+
+.store-description {
+    font-size: 16px;
+    line-height: 2;
+    color: #625B54;
+    margin-bottom: 35px;
+}
+
+.store-notice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #8B8177;
+    font-size: 14px;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+    .store-container {
+        padding: 50px 20px;
+    }
+
+    .store-content h3 {
+        font-size: 22px;
+    }
+
+    .store-description br {
+        display: none;
+    }
+}
