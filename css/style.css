@@ -597,3 +597,8 @@ button {
   color: var(--muted);
   font-size: 14px;
 }
+@media (max-width: 720px) {
+  .desktop-menu-link {
+    display: none;
+  }
+}
