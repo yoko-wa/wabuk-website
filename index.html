@@ -36,175 +36,187 @@
 
 <main>
 
-<section id="home">
-    <div class="home-content">
-        <p class="home-subtitle">GOOD FOOD, BETTER DAYS.</p>
+<style>
+  .wabuk-hero {
+    --navy: #172743;
+    --cream: #fff3de;
+    --orange: #b93219;
+    position: relative;
+    color: var(--navy);
+    background: var(--cream);
+  }
 
-        <h2>Welcome to WaBuk</h2>
+  .wabuk-hero .wabuk-slide {
+    min-height: 480px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px clamp(64px, 8vw, 130px) 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
 
-        <p class="home-description">
-            좋은 음식으로 일상에 작은 행복을.
-        </p>
+  .wabuk-hero .wabuk-slide[hidden] {
+    display: none;
+  }
 
-        <a href="#menu" class="home-button">EXPLORE MENU</a>
+  .wabuk-hero .wabuk-slide h2 {
+    margin: 0 0 16px;
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    word-break: keep-all;
+  }
+
+  .wabuk-hero .wabuk-slide p {
+    margin: 0 0 24px;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .wabuk-hero .wabuk-slide img {
+    display: block;
+    width: 100%;
+    max-height: 380px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+
+  .wabuk-hero .wabuk-cta {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .wabuk-hero .wabuk-opening {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .wabuk-hero .wabuk-controls {
+    position: absolute;
+    right: clamp(16px, 6vw, 96px);
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wabuk-hero .wabuk-controls button {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--navy);
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--navy);
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .wabuk-hero .wabuk-cta:focus-visible,
+  .wabuk-hero .wabuk-controls button:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .wabuk-hero .wabuk-slide {
+      min-height: 420px;
+      padding: 32px 20px 76px;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .wabuk-hero .wabuk-slide img {
+      grid-row: 1;
+      max-height: 270px;
+    }
+  }
+</style>
+
+<section id="home" aria-label="와벅 메인 배너">
+  <div class="wabuk-hero">
+    <article class="wabuk-slide">
+      <div>
+        <h2>베이컨잼 벅</h2>
+        <p>달콤짭짤한 베이컨잼과 구운 양파를 올린 와벅 버거.</p>
+        <a class="wabuk-cta" href="#menu">메뉴 보기</a>
+      </div>
+
+      <!-- 기존 베이컨잼 버거 카드의 src 값을 여기에 복사 -->
+      <img
+        src="images/wabuk-bacon-jam-burger.png"
+        alt="베이컨잼 벅"
+      >
+    </article>
+
+    <article class="wabuk-slide wabuk-opening" hidden>
+      <div>
+        <h2>와벅 오픈 준비 중</h2>
+        <p>좋은 음식으로 일상에 작은 행복을.</p>
+      </div>
+    </article>
+
+    <div class="wabuk-controls">
+      <button type="button" data-step="-1" aria-label="이전 배너">←</button>
+      <span class="wabuk-count" aria-live="polite">1 / 2</span>
+      <button type="button" data-step="1" aria-label="다음 배너">→</button>
     </div>
+  </div>
 </section>
 
-<section id="brand">
-    <p class="section-label">OUR STORY</p>
-    <h2>ABOUT WaBuk</h2>
+<script>
+  (() => {
+    const hero = document.querySelector(".wabuk-hero");
+    const slides = hero.querySelectorAll(".wabuk-slide");
+    const count = hero.querySelector(".wabuk-count");
+    let current = 0;
+    let touchStart = null;
 
-    <p class="brand-description">
-        WaBuk은 좋은 음식과 진심 어린 서비스를 통해<br>
-        평범한 일상에 작은 행복을 전하는 버거 브랜드입니다.
-    </p>
+    function showSlide(step) {
+      slides[current].hidden = true;
+      current = (current + step + slides.length) % slides.length;
+      slides[current].hidden = false;
+      count.textContent = `${current + 1} / ${slides.length}`;
+    }
 
-    <p class="brand-detail">
-        단순히 배를 채우는 음식을 넘어,<br>
-        사람들이 다시 찾고 싶은 맛과 따뜻한 경험을 만들어 갑니다.
-    </p>
-</section>
+    hero.querySelectorAll("[data-step]").forEach((button) => {
+      button.addEventListener("click", () => {
+        showSlide(Number(button.dataset.step));
+      });
+    });
 
-    <section id="philosophy">
-    <p class="section-label">OUR PHILOSOPHY</p>
-    <h2>WHAT WE BELIEVE</h2>
+    hero.addEventListener("touchstart", (event) => {
+      const touch = event.touches[0];
+      touchStart = { x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
 
-    <div class="philosophy-container">
+    hero.addEventListener("touchend", (event) => {
+      if (!touchStart) return;
 
-        <div class="philosophy-item">
-            <h3>QUALITY FIRST</h3>
-            <p>
-                좋은 재료와 정직한 조리로<br>
-                언제나 믿을 수 있는 음식을 만듭니다.
-            </p>
-        </div>
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - touchStart.x;
+      const dy = touch.clientY - touchStart.y;
+      touchStart = null;
 
-        <div class="philosophy-item">
-            <h3>RESPECT PEOPLE</h3>
-            <p>
-                고객과 직원, 함께하는 모든 사람의<br>
-                가치를 존중합니다.
-            </p>
-        </div>
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        showSlide(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
 
-        <div class="philosophy-item">
-            <h3>GROW TOGETHER</h3>
-            <p>
-                함께 성장하고 그 성과를 나누며<br>
-                사회에 긍정적인 가치를 전합니다.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-   <section id="menu">
-    <p class="section-label">OUR MENU</p>
-    <h2>MADE FOR YOUR EVERYDAY</h2>
-    <p class="menu-intro">WaBuk만의 맛있는 순간을 만나보세요.</p>
-
-    <div class="menu-container">
-
-        <div class="menu-item">
-            <div class="menu-image">
-    <img src="wabuk-classic-burger.png" alt="Classic Burger">
-</div>
-            <h3>CLASSIC BURGER</h3>
-            <p>WaBuk의 기본에 충실한 클래식 버거</p>
-            <span>₩ 가격 미정</span>
-        </div>
-
-        <div class="menu-item">
-            <div class="menu-image">
-    <img src="wabuk-bacon-jam-burger.png" alt="Bacon Jam Burger">
-</div>
-            <h3>SPECIAL BURGER</h3>
-            <p>WaBuk만의 특별한 조합을 담은 버거</p>
-            <span>₩ 가격 미정</span>
-        </div>
-
-        <div class="menu-item">
-            <div class="menu-image">
-    <img src="wabuk-cajun-chicken-burger.png" alt="Cajun Chicken Burger">
-</div>
-            <h3>CHICKEN BURGER</h3>
-            <p>바삭하고 풍성한 치킨 버거</p>
-            <span>₩ 가격 미정</span>
-        </div>
-
-    </div>
-</section>
-<!-- NEWS 영역 -->
-<section id="news">
-    <p class="section-label">LATEST NEWS</p>
-    <h2>NEWS & STORIES</h2>
-    <p class="news-intro">WaBuk의 새로운 소식과 이야기를 전합니다.</p>
-
-    <div class="news-container">
-
-        <div class="news-item">
-            <div class="news-image">
-    <img src="wabuk-store-sign.png" alt="WaBuk 매장 간판">
-</div>
-            <p class="news-category">BRAND</p>
-            <h3>WaBuk의 시작</h3>
-            <p>좋은 음식으로 일상에 작은 행복을 전하는 여정.</p>
-        </div>
-
-        <div class="news-item">
-            <div class="news-image">
-    <img src="wabuk-news-menu.png" alt="WaBuk의 다양한 메뉴">
-</div>
-            <p class="news-category">MENU</p>
-            <h3>새로운 메뉴 이야기</h3>
-            <p>WaBuk만의 맛을 만들어가는 과정을 소개합니다.</p>
-        </div>
-
-        <div class="news-item">
-            <div class="news-image">
-    <img src="wabuk-brand-story.png" alt="WaBuk 브랜드 캐릭터">
-</div>
-            <p class="news-category">STORY</p>
-            <h3>우리가 만들어갈 가치</h3>
-            <p>음식을 넘어 따뜻한 일상을 만들어갑니다.</p>
-        </div>
-
-    </div>
-</section>
-<!-- STORE 영역 -->
-<section id="store">
-    <div class="store-wrapper">
-
-        <!-- 왼쪽 안내 영역 -->
-        <div class="store-info">
-            <div class="store-map-pin" aria-hidden="true">
-    <span>W</span>
-</div>
-            <p class="section-label">STORE</p>
-            <h2>OUR STORE</h2>
-            <p class="store-intro">WaBuk을 만날 수 있는 공간</p>
-
-            <span class="store-status">COMING SOON</span>
-
-            <h3>WaBuk의 첫 번째 매장을 준비하고 있습니다.</h3>
-
-            <p class="store-description">
-                좋은 음식과 따뜻한 경험을 전할 수 있는 공간.<br>
-                WaBuk의 첫 번째 이야기가 곧 시작됩니다.
-            </p>
-
-            <p class="store-location">
-                📍 매장 위치 및 오픈 일정은 추후 공개됩니다.
-            </p>
-        </div>
-
-        <!-- 오른쪽 매장 사진 -->
-        <div class="store-photo">
-            <img src="wabuk-store-sign.png" alt="WaBuk 매장 이미지">
-        </div>
-
-    </div>
-</section>
+    hero.addEventListener("touchcancel", () => {
+      touchStart = null;
+    });
+  })();
+</script>
    
 
 </main>
