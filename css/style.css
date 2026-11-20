@@ -903,3 +903,13 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
 }
+/* 현재 보고 있는 메뉴 강조 */
+header nav a.active {
+    color: #F47721;
+    font-weight: 800;
+}
+
+/* 메뉴 색상 변경 효과 */
+header nav a {
+    transition: color 0.3s ease;
+}
