@@ -411,3 +411,139 @@ button {
     gap: 10px 22px;
   }
 }
+/* 메인 배너를 큰 광고 이미지처럼 표시 */
+.hero-slide {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-slide .hero-inner {
+  min-height: clamp(490px, 47vw, 680px);
+  display: flex;
+  align-items: center;
+  padding-block: 72px 100px;
+}
+
+.hero-slide .hero-image {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -2;
+  width: 74%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    #14243c 0%,
+    #14243c 25%,
+    rgb(20 36 60 / 82%) 38%,
+    rgb(20 36 60 / 18%) 70%,
+    transparent 100%
+  );
+}
+
+.hero-slide--store .hero-image {
+  width: 100%;
+}
+
+.hero-slide--store::after {
+  background: linear-gradient(
+    90deg,
+    rgb(14 25 43 / 94%) 0%,
+    rgb(14 25 43 / 82%) 32%,
+    rgb(14 25 43 / 20%) 74%
+  );
+}
+
+.hero-copy {
+  max-width: 460px;
+}
+
+.hero-copy .button {
+  background: #f9bd43;
+  color: #182942;
+}
+
+.hero-copy .button:hover {
+  background: #ffcf69;
+}
+
+.hero-copy .button:focus-visible,
+.hero-controls button:focus-visible {
+  outline-color: #fff;
+}
+
+.hero-controls {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #14243c;
+  color: #fff;
+}
+
+/* 메뉴는 버거 사진을 크게, 소식은 가로형 사진으로 */
+#menu .card {
+  border: 0;
+  box-shadow: 0 8px 26px rgb(24 41 66 / 9%);
+}
+
+#menu .card img {
+  aspect-ratio: 1 / 1;
+}
+
+#menu .card-body {
+  border-top: 4px solid #f9bd43;
+}
+
+#news {
+  background: #e9eff7;
+}
+
+#news .card img {
+  aspect-ratio: 16 / 10;
+}
+
+#store .split {
+  padding: clamp(22px, 4vw, 48px);
+  border-radius: 28px;
+  background: #182942;
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .hero-slide .hero-inner {
+    min-height: 520px;
+    align-items: flex-end;
+    justify-content: center;
+    padding-block: 210px 90px;
+  }
+
+  .hero-slide .hero-image {
+    inset: 0;
+    width: 100%;
+    height: 72%;
+  }
+
+  .hero-slide::after,
+  .hero-slide--store::after {
+    background: linear-gradient(
+      180deg,
+      transparent 18%,
+      rgb(20 36 60 / 68%) 49%,
+      #14243c 72%
+    );
+  }
+
+  #menu .card img {
+    aspect-ratio: 4 / 3;
+  }
+}
