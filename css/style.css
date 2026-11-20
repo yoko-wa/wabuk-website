@@ -556,3 +556,35 @@ button {
   margin-bottom: 26px;
   color: var(--muted);
 }
+/* PC 홈에서는 철학, 소식, 매장을 각 페이지에서 보여줍니다. */
+@media (min-width: 721px) {
+  .has-desktop-pages #home > #philosophy,
+  .has-desktop-pages #home > #news,
+  .has-desktop-pages #home > #store {
+    display: none;
+  }
+}
+
+/* 개별 페이지 공통 제목 */
+.page-heading {
+  padding-block: clamp(44px, 7vw, 85px);
+  background: var(--cream);
+}
+
+.page-heading h1 {
+  margin-bottom: 12px;
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+}
+
+.page-heading p {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.site-nav [aria-current="page"] {
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
