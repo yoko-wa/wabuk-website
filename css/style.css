@@ -344,3 +344,79 @@ footer {
 .menu-item:hover .menu-image img {
     transform: scale(1.05);
 }
+/* NEWS 영역 */
+#news {
+    background-color: #FFFFFF;
+    padding: 130px 8%;
+}
+
+#news h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 20px;
+}
+
+.news-intro {
+    margin-bottom: 55px;
+    color: #625B54;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-item {
+    background-color: #FFF9F0;
+    border: 1px solid #F0E5D8;
+    border-radius: 15px;
+    overflow: hidden;
+    padding-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-7px);
+}
+
+.news-image {
+    height: 200px;
+    background-color: #F0E5D8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8B8177;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.news-category {
+    margin: 25px 25px 10px;
+    color: #F47721;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.news-item h3 {
+    margin: 0 25px 15px;
+    font-size: 20px;
+    color: #292521;
+}
+
+.news-item > p:last-child {
+    margin: 0 25px;
+    color: #625B54;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .news-container {
+        grid-template-columns: 1fr;
+    }
+}
