@@ -61,7 +61,3 @@ if (menuToggle && mainNav) {
         });
     });
 }
-alert(
-    "메뉴 버튼: " + (menuToggle ? "정상" : "찾을 수 없음") +
-    "\n메뉴 영역: " + (mainNav ? "정상" : "찾을 수 없음")
-);
