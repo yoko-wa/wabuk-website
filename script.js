@@ -61,3 +61,4 @@ if (menuToggle && mainNav) {
         });
     });
 }
+alert("WaBuk JavaScript 연결 성공!");
