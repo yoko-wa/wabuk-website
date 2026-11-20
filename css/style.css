@@ -627,3 +627,28 @@ footer {
         min-height: 300px;
     }
 }
+/* STORE 왼쪽 지도 배경 */
+.store-info {
+    position: relative;
+
+    background-color: #FFF5E8;
+
+    background-image:
+        linear-gradient(
+            30deg,
+            transparent 44%,
+            rgba(255, 255, 255, 0.75) 45%,
+            rgba(255, 255, 255, 0.75) 49%,
+            transparent 50%
+        ),
+        linear-gradient(
+            120deg,
+            transparent 44%,
+            rgba(255, 255, 255, 0.75) 45%,
+            rgba(255, 255, 255, 0.75) 49%,
+            transparent 50%
+        );
+
+    background-size: 180px 180px;
+    background-position: center;
+}
