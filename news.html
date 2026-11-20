@@ -3,20 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="와벅의 첫 매장 준비와 메뉴 개발 이야기를 전합니다.">
   <title>와벅 소식 | WaBuk</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js" defer></script>
+
+  <style>
+    .news-page {
+      --news-navy: #182942;
+      --news-cream: #fff3df;
+      --news-paper: #fffdfa;
+      --news-yellow: #f9bd43;
+      --news-line: #e8ded0;
+      --news-muted: #526076;
+      background: var(--news-paper);
+      color: var(--news-navy);
+    }
+
+    .news-page .news-banner {
+      padding-block: clamp(44px, 7vw, 84px);
+      background: var(--news-navy);
+      color: var(--news-cream);
+    }
+
+    .news-page .news-banner h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: 1.05;
+      letter-spacing: -0.065em;
+    }
+
+    .news-page .news-banner h1::after {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 5px;
+      margin-top: 20px;
+      border-radius: 999px;
+      background: var(--news-yellow);
+    }
+
+    .news-page .news-banner p {
+      margin: 18px 0 0;
+      font-size: clamp(16px, 2vw, 20px);
+    }
+
+    .news-page .news-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      padding-block: clamp(32px, 6vw, 72px) clamp(50px, 8vw, 96px);
+    }
+
+    .news-page .news-story {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+      border: 1px solid var(--news-line);
+      border-radius: 24px;
+      background: #fff;
+    }
+
+    .news-page .news-story--featured {
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      grid-template-rows: auto;
+      background: var(--news-cream);
+    }
+
+    .news-page .news-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: var(--news-cream);
+    }
+
+    .news-page .news-story--featured .news-photo {
+      height: 100%;
+      aspect-ratio: 4 / 3;
+    }
+
+    .news-page .news-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: clamp(22px, 3.6vw, 46px);
+    }
+
+    .news-page .news-story--featured .news-copy {
+      align-self: center;
+    }
+
+    .news-page .news-copy h2 {
+      margin: 0 0 10px;
+      font-size: clamp(25px, 3vw, 36px);
+      line-height: 1.2;
+      letter-spacing: -0.045em;
+    }
+
+    .news-page .news-story--featured h2 {
+      font-size: clamp(32px, 4.5vw, 54px);
+    }
+
+    .news-page .news-copy p {
+      margin: 0 0 20px;
+      color: var(--news-muted);
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .news-page .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      margin-top: auto;
+      color: var(--news-navy);
+      font-weight: 750;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .news-page .news-link:hover {
+      color: #9f2f18;
+    }
+
+    .news-page .news-story--featured .news-link {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--news-navy);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .news-page .news-story--featured .news-link:hover {
+      background: #304765;
+    }
+
+    .news-page .news-link:focus-visible {
+      outline: 3px solid var(--news-navy);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 720px) {
+      .news-page .news-banner {
+        padding-block: 34px;
+      }
+
+      .news-page .news-list,
+      .news-page .news-story--featured {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .news-page .news-list {
+        gap: 16px;
+      }
+
+      .news-page .news-story--featured .news-photo {
+        height: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html#home" aria-label="WaBuk 홈">
         <img src="wabuk-logo.png" alt="WaBuk">
       </a>
+
       <button class="nav-toggle" type="button" aria-expanded="false"
-              aria-controls="main-nav" hidden>메뉴</button>
+              aria-controls="main-nav" hidden>
+        메뉴
+      </button>
+
       <nav class="site-nav" id="main-nav" aria-label="주 메뉴">
-        <a href="index.html#menu">메뉴</a>
+        <a href="menu.html">메뉴</a>
         <a href="brand.html">브랜드</a>
         <a href="philosophy.html">철학</a>
         <a href="news.html" aria-current="page">소식</a>
@@ -25,48 +189,57 @@
     </div>
   </header>
 
-  <main>
-    <section class="page-heading">
+  <main class="news-page">
+    <div class="news-banner">
       <div class="container">
         <h1>와벅 소식</h1>
         <p>첫 매장 준비와 메뉴 개발 이야기를 전합니다.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="section" aria-label="소식 목록">
-      <div class="container card-grid">
-        <article class="card">
-          <img src="wabuk-store-sign.png" alt="와벅 매장 외관 콘셉트">
-          <div class="card-body">
-            <h2>와벅의 시작</h2>
-            <p>와벅의 첫 번째 매장을 준비하고 있습니다.</p>
-            <a class="button" href="store.html">매장 안내 보기</a>
-          </div>
-        </article>
+    <section class="container news-list" aria-label="소식 목록">
+      <article class="news-story news-story--featured">
+        <img class="news-photo" src="wabuk-store-sign.png"
+             alt="와벅 간판이 있는 매장 외관 콘셉트">
+        <div class="news-copy">
+          <h2>와벅의 첫 매장</h2>
+          <p>와벅의 첫 번째 매장을 준비하고 있습니다. 매장 위치와 오픈 일정은 확정되는 대로 안내하겠습니다.</p>
+          <a class="news-link" href="store.html">
+            매장 안내 보기 <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
 
-        <article class="card">
-          <img src="wabuk-news-menu.png" alt="와벅 버거 메뉴 이미지">
-          <div class="card-body">
-            <h2>메뉴 이야기</h2>
-            <p>와벅만의 맛을 만들어가고 있습니다.</p>
-            <a class="button" href="index.html#menu">메뉴 보기</a>
-          </div>
-        </article>
+      <article class="news-story">
+        <img class="news-photo" src="wabuk-news-menu.png"
+             alt="와벅 버거 메뉴 이미지" loading="lazy">
+        <div class="news-copy">
+          <h2>메뉴 이야기</h2>
+          <p>베이컨잼 벅과 케이준 치킨 벅, 와벅이 준비하고 있는 버거를 소개합니다.</p>
+          <a class="news-link" href="menu.html">
+            메뉴 보기 <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
 
-        <article class="card">
-          <img src="wabuk-brand-story.png" alt="와벅 브랜드 이미지">
-          <div class="card-body">
-            <h2>와벅이 추구하는 가치</h2>
-            <p>맛있는 한 끼가 평범한 하루에 작은 기쁨이 되기를 바랍니다.</p>
-            <a class="button" href="philosophy.html">브랜드 철학 보기</a>
-          </div>
-        </article>
-      </div>
+      <article class="news-story">
+        <img class="news-photo" src="wabuk-brand-story.png"
+             alt="와벅 브랜드 이미지" loading="lazy">
+        <div class="news-copy">
+          <h2>와벅이 추구하는 가치</h2>
+          <p>맛있는 한 끼가 평범한 하루에 작은 기쁨이 되기를 바랍니다.</p>
+          <a class="news-link" href="philosophy.html">
+            브랜드 철학 보기 <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container"><small>© 2026 WaBuk. All rights reserved.</small></div>
+    <div class="container">
+      <small>© 2026 WaBuk. All rights reserved.</small>
+    </div>
   </footer>
 </body>
 </html>
