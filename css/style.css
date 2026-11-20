@@ -652,3 +652,54 @@ footer {
     background-size: 180px 180px;
     background-position: center;
 }
+/* STORE 지도 위치 핀 */
+.store-map-pin {
+    position: absolute;
+    top: 18%;
+    right: 12%;
+
+    width: 55px;
+    height: 55px;
+
+    background-color: #F47721;
+    border: 4px solid #FFFFFF;
+    border-radius: 50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+
+    z-index: 1;
+}
+
+/* 핀 안의 W 글자 */
+.store-map-pin span {
+    transform: rotate(45deg);
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+/* STORE 글씨가 핀보다 앞에 표시되도록 */
+.store-info > :not(.store-map-pin) {
+    position: relative;
+    z-index: 2;
+}
+
+/* 모바일에서는 핀 크기 조절 */
+@media (max-width: 768px) {
+    .store-map-pin {
+        width: 45px;
+        height: 45px;
+        top: 10%;
+        right: 8%;
+    }
+
+    .store-map-pin span {
+        font-size: 20px;
+    }
+}
