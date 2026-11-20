@@ -1,7 +1,11 @@
 :root {
   --navy: #182942;
+  --hero-navy: #14243c;
   --cream: #fff3df;
   --paper: #fffdfa;
+  --blue-tint: #e9eff7;
+  --yellow: #f9bd43;
+  --yellow-hover: #ffcf69;
   --orange: #b83b20;
   --orange-hover: #9f2f18;
   --muted: #526076;
@@ -10,6 +14,7 @@
   --radius: 20px;
 }
 
+/* 기본 설정 */
 * {
   box-sizing: border-box;
 }
@@ -35,12 +40,6 @@ h2,
 h3,
 p {
   margin: 0;
-}
-
-h1,
-h2,
-h3,
-p {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -71,7 +70,7 @@ button {
   margin-inline: auto;
 }
 
-/* 상단 메뉴 */
+/* 공통 헤더 */
 .site-header {
   position: sticky;
   top: 0;
@@ -108,35 +107,102 @@ button {
   padding-block: 10px;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav [aria-current="page"] {
   color: var(--orange);
+}
+
+.site-nav [aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 .nav-toggle {
   display: none;
 }
 
-/* 메인 배너 */
+/* 공통 버튼 */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 24px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 750;
+}
+
+.button:hover {
+  background: var(--orange-hover);
+}
+
+.button:focus-visible {
+  outline-color: var(--navy);
+}
+
+/* 홈 메인 배너 */
 .hero {
   position: relative;
   touch-action: pan-y pinch-zoom;
 }
 
-.hero-slide--burger {
-  background: var(--cream);
-}
-
-.hero-slide--store {
-  background: #e9eff7;
+.hero-slide {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--hero-navy);
+  color: #fff;
 }
 
 .hero-inner {
-  min-height: 510px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  min-height: clamp(490px, 47vw, 680px);
+  display: flex;
   align-items: center;
-  gap: clamp(24px, 6vw, 76px);
-  padding-block: 44px 88px;
+  padding-block: 72px 100px;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -2;
+  width: 74%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    #14243c 25%,
+    rgb(20 36 60 / 82%) 38%,
+    rgb(20 36 60 / 18%) 70%,
+    transparent 100%
+  );
+}
+
+.hero-slide--store .hero-image {
+  width: 100%;
+}
+
+.hero-slide--store::after {
+  background: linear-gradient(
+    90deg,
+    rgb(14 25 43 / 94%) 0%,
+    rgb(14 25 43 / 82%) 32%,
+    rgb(14 25 43 / 20%) 74%
+  );
+}
+
+.hero-copy {
+  max-width: 460px;
 }
 
 .hero-copy h1,
@@ -152,32 +218,18 @@ button {
   font-size: clamp(16px, 2vw, 20px);
 }
 
-.hero-image {
-  width: 100%;
-  height: clamp(275px, 34vw, 380px);
-  object-fit: cover;
-  border-radius: 28px;
+.hero-copy .button {
+  background: var(--yellow);
+  color: var(--navy);
 }
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  margin-top: 24px;
-  padding: 10px 24px;
-  border-radius: 999px;
-  background: var(--orange);
-  color: white;
-  font-weight: 750;
+.hero-copy .button:hover {
+  background: var(--yellow-hover);
 }
 
-.button:hover {
-  background: var(--orange-hover);
-}
-
-.button:focus-visible {
-  outline-color: var(--navy);
+.hero-copy .button:focus-visible,
+.hero-controls button:focus-visible {
+  outline-color: #fff;
 }
 
 .hero-controls {
@@ -188,6 +240,10 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--hero-navy);
+  color: #fff;
 }
 
 .hero-controls button {
@@ -199,17 +255,15 @@ button {
   border: 1px solid var(--navy);
   border-radius: 50%;
   background: var(--paper);
+  color: var(--navy);
   font-size: 22px;
   line-height: 1;
 }
 
 .hero-controls button:hover {
-  color: white;
+  border-color: var(--paper);
   background: var(--navy);
-}
-
-.hero-controls button:focus-visible {
-  outline-color: var(--navy);
+  color: #fff;
 }
 
 .hero-count {
@@ -220,7 +274,7 @@ button {
   white-space: nowrap;
 }
 
-/* 메뉴, 브랜드, 소식, 매장 */
+/* 홈 본문 */
 .section {
   padding-block: clamp(52px, 8vw, 96px);
 }
@@ -302,11 +356,48 @@ button {
   border-radius: var(--radius);
 }
 
-/* 푸터 */
+#home > #menu .section-title {
+  margin-bottom: 8px;
+}
+
+#home .menu-intro {
+  margin-bottom: 26px;
+  color: var(--muted);
+}
+
+#home > #menu .card {
+  border: 0;
+  box-shadow: 0 8px 26px rgb(24 41 66 / 9%);
+}
+
+#home > #menu .card img {
+  aspect-ratio: 1 / 1;
+}
+
+#home > #menu .card-body {
+  border-top: 4px solid var(--yellow);
+}
+
+#home > #news {
+  background: var(--blue-tint);
+}
+
+#home > #news .card img {
+  aspect-ratio: 16 / 10;
+}
+
+#home > #store .split {
+  padding: clamp(22px, 4vw, 48px);
+  border-radius: 28px;
+  background: var(--navy);
+  color: #fff;
+}
+
+/* 공통 푸터 */
 .site-footer {
   padding-block: 34px;
   background: var(--navy);
-  color: white;
+  color: #fff;
 }
 
 .footer-inner {
@@ -320,7 +411,7 @@ button {
   margin-bottom: 10px;
   padding: 5px;
   border-radius: 8px;
-  background: white;
+  background: #fff;
 }
 
 .footer-inner small {
@@ -331,6 +422,15 @@ button {
 
 .footer-nav a:hover {
   text-decoration: underline;
+}
+
+/* PC 홈에서 개별 페이지와 겹치는 본문 숨김 */
+@media (min-width: 721px) {
+  .has-desktop-pages #home > #philosophy,
+  .has-desktop-pages #home > #news,
+  .has-desktop-pages #home > #store {
+    display: none;
+  }
 }
 
 /* 모바일 */
@@ -376,158 +476,14 @@ button {
   }
 
   .hero-inner {
-    min-height: 0;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding-block: 20px 82px;
-    text-align: center;
-  }
-
-  .hero-image {
-    grid-row: 1;
-    height: clamp(180px, 54vw, 300px);
-    border-radius: var(--radius);
-  }
-
-  .hero-copy p {
-    margin-top: 12px;
-  }
-
-  .button {
-    margin-top: 16px;
-  }
-
-  .card-grid,
-  .split,
-  .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .card-grid {
-    gap: 16px;
-  }
-
-  .footer-nav {
-    gap: 10px 22px;
-  }
-}
-/* 메인 배너를 큰 광고 이미지처럼 표시 */
-.hero-slide {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  color: #fff;
-}
-
-.hero-slide .hero-inner {
-  min-height: clamp(490px, 47vw, 680px);
-  display: flex;
-  align-items: center;
-  padding-block: 72px 100px;
-}
-
-.hero-slide .hero-image {
-  position: absolute;
-  inset: 0 0 0 auto;
-  z-index: -2;
-  width: 74%;
-  height: 100%;
-  border-radius: 0;
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    90deg,
-    #14243c 0%,
-    #14243c 25%,
-    rgb(20 36 60 / 82%) 38%,
-    rgb(20 36 60 / 18%) 70%,
-    transparent 100%
-  );
-}
-
-.hero-slide--store .hero-image {
-  width: 100%;
-}
-
-.hero-slide--store::after {
-  background: linear-gradient(
-    90deg,
-    rgb(14 25 43 / 94%) 0%,
-    rgb(14 25 43 / 82%) 32%,
-    rgb(14 25 43 / 20%) 74%
-  );
-}
-
-.hero-copy {
-  max-width: 460px;
-}
-
-.hero-copy .button {
-  background: #f9bd43;
-  color: #182942;
-}
-
-.hero-copy .button:hover {
-  background: #ffcf69;
-}
-
-.hero-copy .button:focus-visible,
-.hero-controls button:focus-visible {
-  outline-color: #fff;
-}
-
-.hero-controls {
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: #14243c;
-  color: #fff;
-}
-
-/* 메뉴는 버거 사진을 크게, 소식은 가로형 사진으로 */
-#menu .card {
-  border: 0;
-  box-shadow: 0 8px 26px rgb(24 41 66 / 9%);
-}
-
-#menu .card img {
-  aspect-ratio: 1 / 1;
-}
-
-#menu .card-body {
-  border-top: 4px solid #f9bd43;
-}
-
-#news {
-  background: #e9eff7;
-}
-
-#news .card img {
-  aspect-ratio: 16 / 10;
-}
-
-#store .split {
-  padding: clamp(22px, 4vw, 48px);
-  border-radius: 28px;
-  background: #182942;
-  color: #fff;
-}
-
-@media (max-width: 720px) {
-  .hero-slide .hero-inner {
     min-height: 520px;
     align-items: flex-end;
     justify-content: center;
     padding-block: 210px 90px;
+    text-align: center;
   }
 
-  .hero-slide .hero-image {
+  .hero-image {
     inset: 0;
     width: 100%;
     height: 72%;
@@ -543,61 +499,32 @@ button {
     );
   }
 
-  #menu .card img {
+  .hero-copy p {
+    margin-top: 12px;
+  }
+
+  .button {
+    margin-top: 16px;
+  }
+
+  .card-grid,
+  .split,
+  .footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card-grid {
+    gap: 16px;
+  }
+
+  #home > #menu .card img {
     aspect-ratio: 4 / 3;
   }
-}
 
-#menu .section-title {
-  margin-bottom: 8px;
-}
-
-.menu-intro {
-  margin-bottom: 26px;
-  color: var(--muted);
-}
-/* PC 홈에서는 철학, 소식, 매장을 각 페이지에서 보여줍니다. */
-@media (min-width: 721px) {
-  .has-desktop-pages #home > #philosophy,
-  .has-desktop-pages #home > #news,
-  .has-desktop-pages #home > #store {
-    display: none;
+  .footer-nav {
+    gap: 10px 22px;
   }
-}
 
-/* 개별 페이지 공통 제목 */
-.page-heading {
-  padding-block: clamp(44px, 7vw, 85px);
-  background: var(--cream);
-}
-
-.page-heading h1 {
-  margin-bottom: 12px;
-  font-size: clamp(38px, 6vw, 68px);
-  line-height: 1.1;
-  letter-spacing: -0.055em;
-}
-
-.page-heading p {
-  color: var(--muted);
-  font-size: 18px;
-}
-
-.site-nav [aria-current="page"] {
-  color: var(--orange);
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-.store-preview {
-  margin: 0;
-}
-
-.store-preview figcaption {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 14px;
-}
-@media (max-width: 720px) {
   .desktop-menu-link {
     display: none;
   }
