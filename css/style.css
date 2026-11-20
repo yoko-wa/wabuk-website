@@ -519,3 +519,111 @@ footer {
         display: none;
     }
 }
+/* STORE 새로운 디자인 */
+#store {
+    position: relative;
+    background-color: #FFF5E8;
+    padding: 0;
+    overflow: hidden;
+    text-align: left;
+}
+
+.store-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+    align-items: stretch;
+}
+
+/* 왼쪽 안내 영역 */
+.store-info {
+    padding: 75px 8% 75px 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #FFF5E8;
+}
+
+.store-info .section-label {
+    margin-bottom: 10px;
+}
+
+.store-info h2 {
+    font-size: 52px;
+    font-weight: 900;
+    color: #292521;
+    margin-bottom: 12px;
+}
+
+.store-info .store-intro {
+    font-size: 18px;
+    color: #292521;
+    margin-bottom: 25px;
+}
+
+.store-info .store-status {
+    display: inline-block;
+    background-color: #F47721;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.store-info h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #292521;
+    margin-bottom: 20px;
+}
+
+.store-info .store-description {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #625B54;
+    margin-bottom: 25px;
+}
+
+.store-location {
+    font-size: 13px;
+    color: #8B8177;
+}
+
+/* 오른쪽 매장 이미지 */
+.store-photo {
+    position: relative;
+    min-height: 480px;
+    overflow: hidden;
+}
+
+.store-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+    .store-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .store-info {
+        padding: 60px 8%;
+    }
+
+    .store-info h2 {
+        font-size: 38px;
+    }
+
+    .store-photo {
+        min-height: 300px;
+    }
+}
