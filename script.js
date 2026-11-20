@@ -34,3 +34,30 @@ function updateActiveMenu() {
 
 window.addEventListener("scroll", updateActiveMenu);
 window.addEventListener("load", updateActiveMenu);
+// 모바일 햄버거 메뉴 열기 / 닫기
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector("#main-nav");
+
+if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "메뉴 닫기" : "메뉴 열기"
+        );
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    // 메뉴를 선택하면 자동으로 닫기
+    mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            mainNav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "메뉴 열기");
+            menuToggle.textContent = "☰";
+        });
+    });
+}
