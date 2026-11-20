@@ -1,63 +1,87 @@
-// WaBuk 상단 메뉴 활성화
+(() => {
+  // 모바일 메뉴
+  const header = document.querySelector(".site-header");
+  const navToggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("#main-nav");
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-function updateActiveMenu() {
-    let currentSection = "";
-
-    sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 150;
-
-        if (window.scrollY >= sectionTop) {
-            currentSection = section.getAttribute("id");
-        }
-    });
-
-    // 페이지 맨 아래에서는 STORE 활성화
-    const isAtBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 10;
-
-    if (isAtBottom) {
-        currentSection = "store";
+  if (header && navToggle && nav) {
+    function setMenuOpen(isOpen) {
+      nav.classList.toggle("is-open", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
     }
 
-    navLinks.forEach((link) => {
-        link.classList.remove("active");
+    navToggle.hidden = false;
 
-        if (link.getAttribute("href") === "#" + currentSection) {
-            link.classList.add("active");
-        }
-    });
-}
-
-window.addEventListener("scroll", updateActiveMenu);
-window.addEventListener("load", updateActiveMenu);
-// 모바일 햄버거 메뉴 열기 / 닫기
-const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector("#main-nav");
-
-if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", () => {
-        const isOpen = mainNav.classList.toggle("open");
-
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen ? "메뉴 닫기" : "메뉴 열기"
-        );
-
-        menuToggle.textContent = isOpen ? "✕" : "☰";
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      setMenuOpen(!isOpen);
     });
 
-    // 메뉴를 선택하면 자동으로 닫기
-    mainNav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-            mainNav.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "메뉴 열기");
-            menuToggle.textContent = "☰";
-        });
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        setMenuOpen(false);
+      }
     });
-}
+
+    header.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) {
+        setMenuOpen(false);
+        navToggle.focus();
+      }
+    });
+  }
+
+  // 메인 배너
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+
+  const slides = [...hero.querySelectorAll(".hero-slide")];
+  const controls = hero.querySelector(".hero-controls");
+  const count = hero.querySelector(".hero-count");
+
+  if (slides.length < 2 || !controls || !count) return;
+
+  let activeSlide = 0;
+  let swipeStart = null;
+
+  function showSlide(index) {
+    activeSlide = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.hidden = slideIndex !== activeSlide;
+    });
+
+    count.textContent = `${activeSlide + 1} / ${slides.length}`;
+  }
+
+  showSlide(0);
+  controls.hidden = false;
+
+  controls.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-direction]");
+    if (!button) return;
+
+    showSlide(activeSlide + Number(button.dataset.direction));
+  });
+
+  hero.addEventListener("touchstart", (event) => {
+    swipeStart = event.touches.length === 1 ? event.touches[0] : null;
+  }, { passive: true });
+
+  hero.addEventListener("touchend", (event) => {
+    if (!swipeStart) return;
+
+    const touch = event.changedTouches[0];
+    const dx = touch.clientX - swipeStart.clientX;
+    const dy = touch.clientY - swipeStart.clientY;
+    swipeStart = null;
+
+    if (Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+      showSlide(activeSlide + (dx < 0 ? 1 : -1));
+    }
+  }, { passive: true });
+
+  hero.addEventListener("touchcancel", () => {
+    swipeStart = null;
+  });
+})();
