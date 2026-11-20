@@ -913,3 +913,49 @@ header nav a.active {
 header nav a {
     transition: color 0.3s ease;
 }
+/* 모바일 메뉴 버튼: PC에서는 숨김 */
+.menu-toggle {
+    display: none;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+
+    header {
+        position: sticky;
+        top: 0;
+        flex-wrap: wrap;
+    }
+
+    /* 햄버거 메뉴 버튼 */
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        background: none;
+        border: none;
+        color: #183B70;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    /* 모바일 메뉴 기본 상태 */
+    #main-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        background-color: #FFFFFF;
+    }
+
+    /* 메뉴가 열렸을 때 */
+    #main-nav.open {
+        display: flex;
+    }
+
+    #main-nav a {
+        display: block;
+        margin: 0;
+        padding: 12px 0;
+        font-size: 16px;
+    }
+}
