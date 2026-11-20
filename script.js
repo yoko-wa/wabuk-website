@@ -85,3 +85,22 @@
     swipeStart = null;
   });
 })();
+(() => {
+  const desktop = window.matchMedia("(min-width: 721px)");
+  const links = [...document.querySelectorAll("a[data-page]")].map((link) => ({
+    link,
+    mobileHref: link.getAttribute("href"),
+    desktopHref: link.dataset.page,
+  }));
+
+  function updateLinks() {
+    links.forEach(({ link, mobileHref, desktopHref }) => {
+      link.setAttribute("href", desktop.matches ? desktopHref : mobileHref);
+    });
+
+    document.documentElement.classList.toggle("has-desktop-pages", desktop.matches);
+  }
+
+  updateLinks();
+  desktop.addEventListener("change", updateLinks);
+})();
