@@ -774,3 +774,26 @@ footer {
 .logo-smile {
     border-bottom-width: 6px;
 }
+/* WaBuk 이미지 로고 */
+header .wabuk-logo {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+header .wabuk-logo a {
+    display: inline-block;
+}
+
+header .wabuk-logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+/* 모바일 로고 크기 */
+@media (max-width: 768px) {
+    header .wabuk-logo img {
+        width: 115px;
+    }
+}
