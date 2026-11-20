@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="클래식 버거, 베이컨잼 벅, 케이준 치킨 벅 등 와벅의 버거 메뉴를 만나보세요.">
+  <title>와벅 메뉴 | WaBuk</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html#home" aria-label="WaBuk 홈">
+        <img src="wabuk-logo.png" alt="WaBuk">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="main-nav" hidden>메뉴</button>
+
+      <nav class="site-nav" id="main-nav" aria-label="주 메뉴">
+        <a href="menu.html" aria-current="page">메뉴</a>
+        <a href="brand.html">브랜드</a>
+        <a href="philosophy.html">철학</a>
+        <a href="news.html">소식</a>
+        <a href="store.html">매장</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <div class="container">
+        <h1>와벅 메뉴</h1>
+        <p>와벅만의 맛있는 순간을 만나보세요.</p>
+      </div>
+    </section>
+
+    <section class="section" id="menu" aria-labelledby="burger-title">
+      <div class="container">
+        <h2 class="section-title" id="burger-title">버거</h2>
+
+        <div class="card-grid">
+          <article class="card">
+            <img src="wabuk-classic-burger.png" alt="클래식 버거">
+            <div class="card-body">
+              <h3>클래식 버거</h3>
+              <p>와벅의 기본에 충실한 버거.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="wabuk-bacon-jam-burger.png" alt="베이컨잼 벅">
+            <div class="card-body">
+              <h3>베이컨잼 벅</h3>
+              <p>달콤짭짤한 베이컨잼과 구운 양파를 더한 버거.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="wabuk-cajun-chicken-burger.png" alt="케이준 치킨 벅">
+            <div class="card-body">
+              <h3>케이준 치킨 벅</h3>
+              <p>바삭한 케이준 치킨에 아삭한 양배추·당근 샐러드와 피클을 더한 버거.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2026 WaBuk. All rights reserved.</small>
+    </div>
+  </footer>
+</body>
+</html>
