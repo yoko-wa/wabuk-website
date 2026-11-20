@@ -3,11 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="클래식 버거, 베이컨잼 벅, 케이준 치킨 벅 등 와벅의 버거 메뉴를 만나보세요.">
+  <meta name="description" content="베이컨잼 벅, 클래식 버거, 케이준 치킨 벅을 만나보세요.">
   <title>와벅 메뉴 | WaBuk</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js" defer></script>
+
+  <style>
+    .menu-page {
+      --menu-navy: #182942;
+      --menu-cream: #fff3df;
+      --menu-paper: #fffdfa;
+      --menu-line: #e8ded0;
+      --menu-yellow: #f9bd43;
+      color: var(--menu-navy);
+      background: var(--menu-paper);
+    }
+
+    .menu-page .menu-banner {
+      padding-block: clamp(44px, 7vw, 84px);
+      background: var(--menu-navy);
+      color: var(--menu-cream);
+    }
+
+    .menu-page .menu-banner h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: 1.05;
+      letter-spacing: -0.065em;
+    }
+
+    .menu-page .menu-banner h1::after {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 5px;
+      margin-top: 20px;
+      border-radius: 999px;
+      background: var(--menu-yellow);
+    }
+
+    .menu-page .burger-section {
+      padding-block: clamp(32px, 5vw, 68px) clamp(48px, 7vw, 92px);
+    }
+
+    .menu-page .burger-section h2 {
+      margin: 0 0 22px;
+      font-size: clamp(26px, 3.5vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -0.045em;
+    }
+
+    .menu-page .burger-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .menu-page .burger-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid var(--menu-line);
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .menu-page .burger-card--featured {
+      grid-row: span 2;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      align-items: stretch;
+      background: var(--menu-cream);
+    }
+
+    .menu-page .burger-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 170px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: var(--menu-cream);
+    }
+
+    .menu-page .burger-card--featured .burger-photo {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+      height: auto;
+    }
+
+    .menu-page .burger-copy {
+      padding: clamp(17px, 2.4vw, 30px);
+    }
+
+    .menu-page .burger-copy h3 {
+      margin: 0 0 8px;
+      font-size: clamp(21px, 2.4vw, 29px);
+      line-height: 1.2;
+      letter-spacing: -0.045em;
+    }
+
+    .menu-page .burger-card--featured h3 {
+      font-size: clamp(27px, 3.1vw, 38px);
+    }
+
+    .menu-page .burger-copy p {
+      margin: 0;
+      max-width: 34ch;
+      color: #526076;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 900px) {
+      .menu-page .burger-card {
+        grid-template-columns: 1fr;
+        align-content: start;
+      }
+
+      .menu-page .burger-photo {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .menu-page .menu-banner {
+        padding-block: 34px;
+      }
+
+      .menu-page .burger-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .menu-page .burger-card--featured {
+        grid-row: auto;
+      }
+
+      .menu-page .burger-photo,
+      .menu-page .burger-card--featured .burger-photo {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -16,7 +159,9 @@
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false"
-              aria-controls="main-nav" hidden>메뉴</button>
+              aria-controls="main-nav" hidden>
+        메뉴
+      </button>
 
       <nav class="site-nav" id="main-nav" aria-label="주 메뉴">
         <a href="menu.html" aria-current="page">메뉴</a>
@@ -28,40 +173,42 @@
     </div>
   </header>
 
-  <main>
-    <section class="page-heading">
+  <main class="menu-page">
+    <div class="menu-banner">
       <div class="container">
         <h1>와벅 메뉴</h1>
-        <p>와벅만의 맛있는 순간을 만나보세요.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="section" id="menu" aria-labelledby="burger-title">
+    <section class="burger-section" id="menu" aria-labelledby="burger-title">
       <div class="container">
-        <h2 class="section-title" id="burger-title">버거</h2>
+        <h2 id="burger-title">버거</h2>
 
-        <div class="card-grid">
-          <article class="card">
-            <img src="wabuk-classic-burger.png" alt="클래식 버거">
-            <div class="card-body">
+        <div class="burger-grid">
+          <article class="burger-card burger-card--featured">
+            <img class="burger-photo" src="wabuk-bacon-jam-burger.png"
+                 alt="베이컨잼 벅" fetchpriority="high">
+            <div class="burger-copy">
+              <h3>베이컨잼 벅</h3>
+              <p>달콤짭짤한 베이컨잼에 구운 양파를 더한 버거.</p>
+            </div>
+          </article>
+
+          <article class="burger-card">
+            <img class="burger-photo" src="wabuk-classic-burger.png"
+                 alt="클래식 버거">
+            <div class="burger-copy">
               <h3>클래식 버거</h3>
               <p>와벅의 기본에 충실한 버거.</p>
             </div>
           </article>
 
-          <article class="card">
-            <img src="wabuk-bacon-jam-burger.png" alt="베이컨잼 벅">
-            <div class="card-body">
-              <h3>베이컨잼 벅</h3>
-              <p>달콤짭짤한 베이컨잼과 구운 양파를 더한 버거.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img src="wabuk-cajun-chicken-burger.png" alt="케이준 치킨 벅">
-            <div class="card-body">
+          <article class="burger-card">
+            <img class="burger-photo" src="wabuk-cajun-chicken-burger.png"
+                 alt="케이준 치킨 벅">
+            <div class="burger-copy">
               <h3>케이준 치킨 벅</h3>
-              <p>바삭한 케이준 치킨에 아삭한 양배추·당근 샐러드와 피클을 더한 버거.</p>
+              <p>바삭한 케이준 치킨에 양배추·당근 샐러드와 피클을 더한 버거.</p>
             </div>
           </article>
         </div>
