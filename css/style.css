@@ -797,3 +797,97 @@ header .wabuk-logo img {
         width: 115px;
     }
 }
+/* FOOTER 영역 */
+#footer {
+    background-color: #142D4E;
+    color: #FFFFFF;
+    padding: 70px 8% 25px;
+}
+
+/* FOOTER 전체 배치 */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 60px;
+    padding-bottom: 60px;
+}
+
+/* 브랜드 영역 */
+.footer-brand img {
+    width: 160px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    color: #C5CED9;
+    line-height: 1.8;
+}
+
+/* 메뉴 및 연락처 */
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+    font-size: 15px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.footer-links a {
+    color: #C5CED9;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #F47721;
+}
+
+.footer-contact p {
+    color: #C5CED9;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* 하단 저작권 */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #A5B2C2;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+    #footer {
+        padding: 50px 8% 25px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-bottom: 40px;
+    }
+
+    .footer-brand img {
+        width: 140px;
+    }
+}
