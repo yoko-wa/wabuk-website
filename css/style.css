@@ -898,3 +898,8 @@ header {
     z-index: 1000;
     background-color: #FFFFFF;
 }
+/* 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
