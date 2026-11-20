@@ -1,262 +1,268 @@
 <!DOCTYPE html>
-
 <html lang="ko">
-
-<head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>WaBuk | 공식 홈페이지</title>
-<link rel="stylesheet" href="css/style.css">
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="좋은 음식으로 일상에 작은 행복을 전하는 버거 브랜드 WaBuk.">
+  <title>WaBuk | 공식 홈페이지</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home" aria-label="WaBuk 홈">
+        <img src="wabuk-logo.png" alt="WaBuk">
+      </a>
 
-<header>
-   <h1 class="wabuk-logo">
-    <a href="#home">
-        <img src="wabuk-logo.png" alt="WaBuk 공식 로고">
-    </a>
-</h1>
-<!-- 모바일 메뉴 버튼 -->
-<button class="menu-toggle"
-        type="button"
-        aria-label="메뉴 열기"
-        aria-expanded="false"
-        aria-controls="main-nav">
-    ☰
-</button>
-  <nav id="main-nav">
-        <a href="#brand">BRAND</a>
-        <a href="#philosophy">PHILOSOPHY</a>
-        <a href="#menu">MENU</a>
-        <a href="#news">NEWS</a>
-        <a href="#store">STORE</a>
-    </nav>
-</header>
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="main-nav" hidden>
+        메뉴
+      </button>
 
-<main>
+      <nav class="site-nav" id="main-nav" aria-label="주 메뉴">
+        <a href="#menu">메뉴</a>
+        <a href="#brand">브랜드</a>
+        <a href="#philosophy">철학</a>
+        <a href="#news">소식</a>
+        <a href="#store">매장</a>
+      </nav>
+    </div>
+  </header>
 
-<style>
-  .wabuk-hero {
-    --navy: #172743;
-    --cream: #fff3de;
-    --orange: #b93219;
-    position: relative;
-    color: var(--navy);
-    background: var(--cream);
-  }
+  <main id="home">
+    <!-- 메인 배너: 각 article 안에서 사진, 문구, 버튼을 바꿀 수 있습니다. -->
+    <section class="hero" aria-label="메인 배너">
+      <article class="hero-slide hero-slide--burger">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>베이컨잼 벅</h1>
+            <p>달콤짭짤한 베이컨잼과 구운 양파를 올린 와벅 버거.</p>
+            <a class="button" href="#menu">메뉴 보기</a>
+          </div>
+          <img class="hero-image" src="wabuk-bacon-jam-burger.png" alt="베이컨잼 벅">
+        </div>
+      </article>
 
-  .wabuk-hero .wabuk-slide {
-    min-height: 480px;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 48px clamp(64px, 8vw, 130px) 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: center;
-  }
+      <article class="hero-slide hero-slide--store" hidden>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h2>와벅 오픈 준비 중</h2>
+            <p>좋은 음식으로 일상에 작은 행복을.</p>
+            <a class="button" href="#store">매장 소식 보기</a>
+          </div>
+          <img class="hero-image" src="wabuk-store-sign.png" alt="와벅 매장 외관 이미지">
+        </div>
+      </article>
 
-  .wabuk-hero .wabuk-slide[hidden] {
-    display: none;
-  }
-
-  .wabuk-hero .wabuk-slide h2 {
-    margin: 0 0 16px;
-    font-size: clamp(38px, 6vw, 76px);
-    line-height: 1.1;
-    letter-spacing: -0.05em;
-    word-break: keep-all;
-  }
-
-  .wabuk-hero .wabuk-slide p {
-    margin: 0 0 24px;
-    font-size: clamp(16px, 2vw, 20px);
-    line-height: 1.6;
-    word-break: keep-all;
-  }
-
-  .wabuk-hero .wabuk-slide img {
-    display: block;
-    width: 100%;
-    max-height: 380px;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 24px;
-  }
-
-  .wabuk-hero .wabuk-cta {
-    display: inline-block;
-    padding: 13px 22px;
-    border-radius: 999px;
-    background: var(--orange);
-    color: #fff;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .wabuk-hero .wabuk-opening {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .wabuk-hero .wabuk-controls {
-    position: absolute;
-    right: clamp(16px, 6vw, 96px);
-    bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .wabuk-hero .wabuk-controls button {
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--navy);
-    border-radius: 50%;
-    background: var(--cream);
-    color: var(--navy);
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  .wabuk-hero .wabuk-cta:focus-visible,
-  .wabuk-hero .wabuk-controls button:focus-visible {
-    outline: 3px solid var(--navy);
-    outline-offset: 4px;
-  }
-
-  @media (max-width: 700px) {
-    .wabuk-hero .wabuk-slide {
-      min-height: 420px;
-      padding: 32px 20px 76px;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      text-align: center;
-    }
-
-    .wabuk-hero .wabuk-slide img {
-      grid-row: 1;
-      max-height: 270px;
-    }
-  }
-</style>
-
-<section id="home" aria-label="와벅 메인 배너">
-  <div class="wabuk-hero">
-    <article class="wabuk-slide">
-      <div>
-        <h2>베이컨잼 벅</h2>
-        <p>달콤짭짤한 베이컨잼과 구운 양파를 올린 와벅 버거.</p>
-        <a class="wabuk-cta" href="#menu">메뉴 보기</a>
+      <div class="hero-controls" hidden>
+        <button type="button" data-direction="-1" aria-label="이전 배너">←</button>
+        <span class="hero-count" aria-live="polite">1 / 2</span>
+        <button type="button" data-direction="1" aria-label="다음 배너">→</button>
       </div>
+    </section>
 
-      <!-- 기존 베이컨잼 버거 카드의 src 값을 여기에 복사 -->
-      <img
-        src="images/wabuk-bacon-jam-burger.png"
-        alt="베이컨잼 벅"
-      >
-    </article>
+    <section class="section" id="menu">
+      <div class="container">
+        <h2 class="section-title">와벅 메뉴</h2>
 
-    <article class="wabuk-slide wabuk-opening" hidden>
+        <div class="card-grid">
+          <article class="card">
+            <img src="wabuk-classic-burger.png" alt="클래식 버거" loading="lazy">
+            <div class="card-body">
+              <h3>클래식 버거</h3>
+              <p>와벅의 기본에 충실한 버거.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="wabuk-bacon-jam-burger.png" alt="베이컨잼 벅" loading="lazy">
+            <div class="card-body">
+              <h3>베이컨잼 벅</h3>
+              <p>베이컨잼과 구운 양파를 더한 버거.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="wabuk-cajun-chicken-burger.png" alt="케이준 치킨 벅" loading="lazy">
+            <div class="card-body">
+              <h3>케이준 치킨 벅</h3>
+              <p>바삭한 케이준 치킨에 아삭한 샐러드를 더한 버거.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cream" id="brand">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">와벅 이야기</h2>
+          <p class="lead">좋은 음식으로 일상에 작은 행복을.</p>
+          <p>
+            와벅은 좋은 음식과 진심 어린 서비스로 평범한 하루에 작은 행복을 전하는
+            버거 브랜드입니다. 하루를 마치고 문득 생각나는 맛과 따뜻한 경험을
+            만들어가고 있습니다.
+          </p>
+        </div>
+        <img class="split-image" src="wabuk-brand-story.png" alt="와벅 브랜드 이미지"
+             loading="lazy">
+      </div>
+    </section>
+
+    <section class="section" id="philosophy">
+      <div class="container">
+        <h2 class="section-title">와벅이 지키는 기준</h2>
+
+        <div class="card-grid">
+          <article class="value">
+            <h3>품질을 먼저 생각합니다</h3>
+            <p>좋은 재료와 정직한 조리로 믿고 먹을 수 있는 음식을 만듭니다.</p>
+          </article>
+
+          <article class="value">
+            <h3>사람을 존중합니다</h3>
+            <p>고객과 직원, 와벅과 함께하는 모든 사람을 존중합니다.</p>
+          </article>
+
+          <article class="value">
+            <h3>함께 성장합니다</h3>
+            <p>함께 일하고 성장하며 그 성과를 나눌 수 있는 관계를 지향합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cream" id="news">
+      <div class="container">
+        <h2 class="section-title">와벅 소식</h2>
+
+        <div class="card-grid">
+          <article class="card">
+            <img src="wabuk-store-sign.png" alt="와벅 간판과 매장 외관" loading="lazy">
+            <div class="card-body">
+              <h3>와벅의 시작</h3>
+              <p>와벅의 첫 번째 매장을 준비하고 있습니다.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="wabuk-news-menu.png" alt="와벅 메뉴 이미지" loading="lazy">
+            <div class="card-body">
+              <h3>메뉴 이야기</h3>
+              <p>와벅만의 맛을 만들어가고 있습니다.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="wabuk-brand-story.png" alt="와벅 브랜드 이미지" loading="lazy">
+            <div class="card-body">
+              <h3>와벅이 추구하는 가치</h3>
+              <p>맛있는 한 끼가 평범한 하루에 작은 기쁨이 되기를 바랍니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="store">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">매장 안내</h2>
+          <p class="lead">와벅의 첫 매장을 준비하고 있습니다.</p>
+          <p>매장 위치와 오픈 일정은 확정되는 대로 안내하겠습니다.</p>
+        </div>
+        <img class="split-image" src="wabuk-store-sign.png"
+             alt="와벅 매장 외관 콘셉트 이미지" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
       <div>
-        <h2>와벅 오픈 준비 중</h2>
+        <img class="footer-logo" src="wabuk-logo.png" alt="WaBuk" loading="lazy">
         <p>좋은 음식으로 일상에 작은 행복을.</p>
       </div>
-    </article>
 
-    <div class="wabuk-controls">
-      <button type="button" data-step="-1" aria-label="이전 배너">←</button>
-      <span class="wabuk-count" aria-live="polite">1 / 2</span>
-      <button type="button" data-step="1" aria-label="다음 배너">→</button>
+      <nav class="footer-nav" aria-label="하단 메뉴">
+        <a href="#menu">메뉴</a>
+        <a href="#brand">브랜드</a>
+        <a href="#news">소식</a>
+        <a href="#store">매장</a>
+      </nav>
+
+      <small>© 2026 WaBuk. All rights reserved.</small>
     </div>
-  </div>
-</section>
+  </footer>
 
-<script>
-  (() => {
-    const hero = document.querySelector(".wabuk-hero");
-    const slides = hero.querySelectorAll(".wabuk-slide");
-    const count = hero.querySelector(".wabuk-count");
-    let current = 0;
-    let touchStart = null;
+  <script>
+    const navToggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector("#main-nav");
 
-    function showSlide(step) {
-      slides[current].hidden = true;
-      current = (current + step + slides.length) % slides.length;
-      slides[current].hidden = false;
-      count.textContent = `${current + 1} / ${slides.length}`;
+    navToggle.hidden = false;
+
+    function setMenuOpen(isOpen) {
+      nav.classList.toggle("is-open", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
     }
 
-    hero.querySelectorAll("[data-step]").forEach((button) => {
-      button.addEventListener("click", () => {
-        showSlide(Number(button.dataset.step));
-      });
+    navToggle.addEventListener("click", () => {
+      setMenuOpen(navToggle.getAttribute("aria-expanded") === "false");
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) setMenuOpen(false);
+    });
+
+    document.querySelector(".site-header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) {
+        setMenuOpen(false);
+        navToggle.focus();
+      }
+    });
+
+    const hero = document.querySelector(".hero");
+    const slides = hero.querySelectorAll(".hero-slide");
+    const controls = hero.querySelector(".hero-controls");
+    const count = hero.querySelector(".hero-count");
+    let activeSlide = 0;
+    let swipeStart = null;
+
+    controls.hidden = slides.length < 2;
+    count.textContent = `1 / ${slides.length}`;
+
+    function changeSlide(direction) {
+      slides[activeSlide].hidden = true;
+      activeSlide = (activeSlide + direction + slides.length) % slides.length;
+      slides[activeSlide].hidden = false;
+      count.textContent = `${activeSlide + 1} / ${slides.length}`;
+    }
+
+    controls.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-direction]");
+      if (button) changeSlide(Number(button.dataset.direction));
     });
 
     hero.addEventListener("touchstart", (event) => {
-      const touch = event.touches[0];
-      touchStart = { x: touch.clientX, y: touch.clientY };
+      swipeStart = event.touches.length === 1 ? event.touches[0] : null;
     }, { passive: true });
 
     hero.addEventListener("touchend", (event) => {
-      if (!touchStart) return;
+      if (!swipeStart) return;
 
       const touch = event.changedTouches[0];
-      const dx = touch.clientX - touchStart.x;
-      const dy = touch.clientY - touchStart.y;
-      touchStart = null;
+      const dx = touch.clientX - swipeStart.clientX;
+      const dy = touch.clientY - swipeStart.clientY;
+      swipeStart = null;
 
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-        showSlide(dx < 0 ? 1 : -1);
+      if (Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+        changeSlide(dx < 0 ? 1 : -1);
       }
     }, { passive: true });
 
     hero.addEventListener("touchcancel", () => {
-      touchStart = null;
+      swipeStart = null;
     });
-  })();
-</script>
-   
-
-</main>
-
-<footer>
-    <p>© 2026 WaBuk. All Rights Reserved.</p>
-</footer>
-<!-- FOOTER 영역 -->
-<footer id="footer">
-    <div class="footer-container">
-
-        <div class="footer-brand">
-            <img src="wabuk-logo.png" alt="WaBuk 로고">
-
-            <p>
-                평범한 하루에 작은 행복을 더하는 버거 브랜드.
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <h3>EXPLORE</h3>
-            <a href="#home">HOME</a>
-            <a href="#brand">BRAND</a>
-            <a href="#menu">MENU</a>
-            <a href="#news">NEWS</a>
-            <a href="#store">STORE</a>
-        </div>
-
-        <div class="footer-contact">
-            <h3>CONTACT</h3>
-            <p>WaBuk 공식 홈페이지</p>
-            <p>문의 및 제휴 안내는 추후 공개됩니다.</p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>© 2026 WaBuk. All rights reserved.</p>
-    </div>
-</footer>
-   <script src="script.js"></script>
-</body> 
+  </script>
+</body>
 </html>
