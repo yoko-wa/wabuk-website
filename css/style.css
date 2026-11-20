@@ -891,3 +891,10 @@ header .wabuk-logo img {
         width: 140px;
     }
 }
+/* 상단 메뉴 고정 */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #FFFFFF;
+}
