@@ -14,6 +14,15 @@ function updateActiveMenu() {
         }
     });
 
+    // 페이지 맨 아래에서는 STORE 활성화
+    const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 10;
+
+    if (isAtBottom) {
+        currentSection = "store";
+    }
+
     navLinks.forEach((link) => {
         link.classList.remove("active");
 
