@@ -6,6 +6,7 @@
   <meta name="description" content="좋은 음식으로 일상에 작은 행복을 전하는 버거 브랜드 WaBuk.">
   <title>WaBuk | 공식 홈페이지</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -30,7 +31,7 @@
   </header>
 
   <main id="home">
-    <!-- 메인 배너: 각 article 안에서 사진, 문구, 버튼을 바꿀 수 있습니다. -->
+    <!-- 메인 배너 -->
     <section class="hero" aria-label="메인 배너">
       <article class="hero-slide hero-slide--burger">
         <div class="container hero-inner">
@@ -39,7 +40,9 @@
             <p>달콤짭짤한 베이컨잼과 구운 양파를 올린 와벅 버거.</p>
             <a class="button" href="#menu" data-page="menu.html">메뉴 보기</a>
           </div>
-          <img class="hero-image" src="wabuk-bacon-jam-burger.png" alt="베이컨잼 벅">
+
+          <img class="hero-image" src="wabuk-bacon-jam-burger.png"
+               alt="베이컨잼 벅" fetchpriority="high">
         </div>
       </article>
 
@@ -50,7 +53,9 @@
             <p>좋은 음식으로 일상에 작은 행복을.</p>
             <a class="button" href="#store" data-page="store.html">매장 소식 보기</a>
           </div>
-          <img class="hero-image" src="wabuk-store-sign.png" alt="와벅 매장 외관 이미지">
+
+          <img class="hero-image" src="wabuk-store-sign.png"
+               alt="와벅 매장 외관 콘셉트 이미지">
         </div>
       </article>
 
@@ -61,10 +66,12 @@
       </div>
     </section>
 
-    <section class="section" id="menu">
+    <!-- 대표 메뉴 -->
+    <section class="section" id="menu" aria-labelledby="menu-title">
       <div class="container">
-        <h2 class="section-title">와벅 메뉴</h2>
-<p class="menu-intro">와벅만의 맛있는 순간을 만나보세요.</p>
+        <h2 class="section-title" id="menu-title">와벅 메뉴</h2>
+        <p class="menu-intro">와벅만의 맛있는 순간을 만나보세요.</p>
+
         <div class="card-grid">
           <article class="card">
             <img src="wabuk-classic-burger.png" alt="클래식 버거" loading="lazy">
@@ -89,15 +96,17 @@
               <p>바삭한 케이준 치킨에 아삭한 샐러드를 더한 버거.</p>
             </div>
           </article>
-          <a class="button desktop-menu-link" href="menu.html">전체 메뉴 보기</a>
         </div>
+
+        <a class="button desktop-menu-link" href="menu.html">전체 메뉴 보기</a>
       </div>
     </section>
 
-    <section class="section section--cream" id="brand">
+    <!-- 브랜드 소개 -->
+    <section class="section section--cream" id="brand" aria-labelledby="brand-title">
       <div class="container split">
         <div>
-          <h2 class="section-title">와벅 이야기</h2>
+          <h2 class="section-title" id="brand-title">와벅 이야기</h2>
           <p class="lead">좋은 음식으로 일상에 작은 행복을.</p>
           <p>
             와벅은 좋은 음식과 진심 어린 서비스로 평범한 하루에 작은 행복을 전하는
@@ -105,14 +114,16 @@
             만들어가고 있습니다.
           </p>
         </div>
-        <img class="split-image" src="wabuk-brand-story.png" alt="와벅 브랜드 이미지"
-             loading="lazy">
+
+        <img class="split-image" src="wabuk-brand-story.png"
+             alt="와벅 브랜드 이미지" loading="lazy">
       </div>
     </section>
 
-    <section class="section" id="philosophy">
+    <!-- 모바일 홈에서도 볼 수 있는 철학·소식·매장 -->
+    <section class="section" id="philosophy" aria-labelledby="philosophy-title">
       <div class="container">
-        <h2 class="section-title">와벅이 지키는 기준</h2>
+        <h2 class="section-title" id="philosophy-title">와벅이 지키는 기준</h2>
 
         <div class="card-grid">
           <article class="value">
@@ -133,13 +144,13 @@
       </div>
     </section>
 
-    <section class="section section--cream" id="news">
+    <section class="section section--cream" id="news" aria-labelledby="news-title">
       <div class="container">
-        <h2 class="section-title">와벅 소식</h2>
+        <h2 class="section-title" id="news-title">와벅 소식</h2>
 
         <div class="card-grid">
           <article class="card">
-            <img src="wabuk-store-sign.png" alt="와벅 간판과 매장 외관" loading="lazy">
+            <img src="wabuk-store-sign.png" alt="와벅 간판과 매장 외관 콘셉트" loading="lazy">
             <div class="card-body">
               <h3>와벅의 시작</h3>
               <p>와벅의 첫 번째 매장을 준비하고 있습니다.</p>
@@ -165,13 +176,14 @@
       </div>
     </section>
 
-    <section class="section" id="store">
+    <section class="section" id="store" aria-labelledby="store-title">
       <div class="container split">
         <div>
-          <h2 class="section-title">매장 안내</h2>
+          <h2 class="section-title" id="store-title">매장 안내</h2>
           <p class="lead">와벅의 첫 매장을 준비하고 있습니다.</p>
           <p>매장 위치와 오픈 일정은 확정되는 대로 안내하겠습니다.</p>
         </div>
+
         <img class="split-image" src="wabuk-store-sign.png"
              alt="와벅 매장 외관 콘셉트 이미지" loading="lazy">
       </div>
@@ -185,17 +197,15 @@
         <p>좋은 음식으로 일상에 작은 행복을.</p>
       </div>
 
-    <nav class="footer-nav" aria-label="하단 메뉴">
-  <a href="#menu" data-page="menu.html">메뉴</a>
-  <a href="#brand" data-page="brand.html">브랜드</a>
-  <a href="#news" data-page="news.html">소식</a>
-  <a href="#store" data-page="store.html">매장</a>
-</nav>
+      <nav class="footer-nav" aria-label="하단 메뉴">
+        <a href="#menu" data-page="menu.html">메뉴</a>
+        <a href="#brand" data-page="brand.html">브랜드</a>
+        <a href="#news" data-page="news.html">소식</a>
+        <a href="#store" data-page="store.html">매장</a>
+      </nav>
 
       <small>© 2026 WaBuk. All rights reserved.</small>
     </div>
   </footer>
-
- <script src="script.js"></script>
 </body>
 </html>
