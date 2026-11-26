@@ -1,4 +1,18 @@
+@font-face {
+  font-family: "WaBuk Sans";
+  src: url("../assets/fonts/noto-kr-regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "WaBuk Sans";
+  src: url("../assets/fonts/noto-kr-bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
+  --brand-font: "WaBuk Sans", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --navy: #112c59;
   --hero-navy: #14243c;
   --cream: #fff5e2;
@@ -31,7 +45,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--navy);
-  font-family: system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-family: var(--brand-font);
   line-height: 1.65;
 }
 
@@ -132,7 +146,7 @@ button {
   border-radius: 999px;
   background: var(--orange);
   color: #fff;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .button:hover {
@@ -151,8 +165,8 @@ button {
 .hero-product { margin: 0; text-align: right; }
 .hero-product img { width: 100%; height: auto; border-radius: 48% 48% 16px 16px; }
 .hero-product figcaption,.caption { margin-top: 8px; font-size: .875rem; }
-.page-label { font: 800 .9rem/2 system-ui,sans-serif; letter-spacing: .12em; }
-.site-header { background: var(--navy); color: white; }
+.page-label { font: italic 700 .9rem/2 var(--brand-font); letter-spacing: .12em; }
+.site-header { background: #c81022; color: white; }
 .site-nav { font-size: .9rem; }
 .site-nav a:hover,.site-nav [aria-current="page"] { color: var(--yellow); }
 .footer-logo { background: transparent; }
@@ -227,7 +241,7 @@ button {
 .lead {
   margin-bottom: 10px;
   font-size: clamp(19px, 2.4vw, 25px);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.4;
 }
 
@@ -385,3 +399,7 @@ button {
     display: none;
   }
 }
+
+/* Storefront typography: upright Korean copy and inclined Latin navigation. */
+h1, h2, h3 { font-weight: 700; }
+.site-nav { font-style: italic; font-weight: 700; letter-spacing: .025em; }

@@ -64,7 +64,7 @@
   padding-inline-start: 15px;
   border-inline-start: 4px solid var(--brand-yellow);
   font-size: clamp(18px, 2.1vw, 24px);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.45;
   word-break: keep-all;
 }
@@ -116,7 +116,7 @@
 .brand-page .brand-promise-lead {
   margin: 0 0 8px;
   font-size: clamp(17px, 2vw, 21px);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.5;
 }
 

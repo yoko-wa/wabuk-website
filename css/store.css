@@ -58,7 +58,7 @@
   background: var(--store-yellow);
   color: var(--store-navy);
   font-size: 14px;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .store-page .store-status::before {
