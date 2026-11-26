@@ -1,0 +1,152 @@
+.brand-page {
+  --brand-navy: var(--navy);
+  --brand-cream: var(--cream);
+  --brand-paper: var(--paper);
+  --brand-yellow: var(--yellow);
+  --brand-muted: var(--muted);
+  --brand-line: var(--line);
+  background: var(--brand-paper);
+  color: var(--brand-navy);
+}
+
+/* 페이지 제목 */
+.brand-page .brand-banner {
+  padding-block: clamp(44px, 7vw, 84px);
+  background: var(--brand-navy);
+  color: var(--brand-cream);
+}
+
+.brand-page .brand-banner h1 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 84px);
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+}
+
+.brand-page .brand-banner h1::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 5px;
+  margin-top: 20px;
+  border-radius: 999px;
+  background: var(--brand-yellow);
+}
+
+.brand-page .brand-banner p {
+  margin: 18px 0 0;
+  font-size: clamp(16px, 2vw, 20px);
+}
+
+/* 브랜드 이야기 */
+.brand-page .brand-story {
+  padding-block: clamp(42px, 7vw, 92px);
+  background: var(--brand-cream);
+}
+
+.brand-page .brand-story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(28px, 6vw, 78px);
+}
+
+.brand-page h2 {
+  margin: 0;
+  font-size: clamp(30px, 4.4vw, 55px);
+  line-height: 1.18;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.brand-page .brand-quote {
+  margin: 22px 0 16px;
+  padding-inline-start: 15px;
+  border-inline-start: 4px solid var(--brand-yellow);
+  font-size: clamp(18px, 2.1vw, 24px);
+  font-weight: 750;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.brand-page .brand-text {
+  max-width: 36ch;
+  margin: 0;
+  color: var(--brand-muted);
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.brand-page .brand-art {
+  margin: 0;
+  padding: clamp(10px, 2vw, 20px);
+  border: 1px solid var(--brand-line);
+  border-radius: 24px;
+  background: var(--brand-paper);
+}
+
+.brand-page .brand-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* 브랜드가 지키는 기준 */
+.brand-page .brand-promise {
+  padding-block: clamp(36px, 6vw, 76px);
+}
+
+.brand-page .brand-promise-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 24px clamp(24px, 5vw, 60px);
+  padding: clamp(24px, 5vw, 58px);
+  border: 1px solid var(--brand-line);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.brand-page .brand-promise h2 {
+  font-size: clamp(28px, 3.8vw, 46px);
+}
+
+.brand-page .brand-promise-lead {
+  margin: 0 0 8px;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.brand-page .brand-promise .button {
+  margin-top: 18px;
+  border: 1px solid var(--brand-navy);
+  background: transparent;
+  color: var(--brand-navy);
+}
+
+.brand-page .brand-promise .button:hover {
+  background: var(--brand-navy);
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .brand-page .brand-banner {
+    padding-block: 34px;
+  }
+
+  .brand-page .brand-story-layout,
+  .brand-page .brand-promise-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .brand-page .brand-story-layout {
+    gap: 26px;
+  }
+
+  .brand-page .brand-promise-panel {
+    gap: 14px;
+  }
+}
